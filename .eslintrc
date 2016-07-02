@@ -1,0 +1,30 @@
+{
+    "extends": "eslint:recommended",
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "rules": {
+        "semi": 0,
+        "no-console": 0,
+        "arrow-body-style": 2,
+        "arrow-parens": 2,
+        "arrow-spacing": 2,
+        "generator-star-spacing": 2,
+        "no-useless-constructor": 2,
+        "no-var": 2,
+        "object-shorthand": 2,
+        "prefer-arrow-callback": 2,
+        "prefer-const": 2,
+        "prefer-reflect": 2,
+        "prefer-rest-params": 2,
+        "prefer-spread": 2,
+        "prefer-template": 2,
+        "require-yield": 2,
+        "template-curly-spacing": 2,
+        "yield-star-spacing": 2
+    }
+}

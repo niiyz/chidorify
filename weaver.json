@@ -1,0 +1,32 @@
+{
+  "diagram": [
+    [0, 0, 0, 1, 0, 0, 0, 1],
+    [0, 1, 1, 1, 0, 1, 1, 1],
+    [1, 0, 1, 1, 1, 0, 1, 1],
+    [0, 0, 1, 0, 0, 0, 1, 0],
+    [0, 0, 0, 1, 0, 0, 0, 1],
+    [0, 1, 1, 1, 0, 1, 1, 1],
+    [1, 0, 1, 1, 1, 0, 1, 1],
+    [0, 0, 1, 0, 0, 0, 1, 0]
+  ],
+  "warp": [
+      {"color": "2EF1FF", "thickness": 1},
+      {"color": "2EF1FF", "thickness": 1},
+      {"color": "2EF1FF", "thickness": 1},
+      {"color": "2EF1FF", "thickness": 1},
+      {"color": "2EF1FF", "thickness": 1},
+      {"color": "2EF1FF", "thickness": 1},
+      {"color": "2EF1FF", "thickness": 1},
+      {"color": "2EF1FF", "thickness": 1}
+  ],
+  "weft": [
+      {"color": "ea9034", "thickness": 1},
+      {"color": "ea9034", "thickness": 1},
+      {"color": "ea9034", "thickness": 1},
+      {"color": "ea9034", "thickness": 1},
+      {"color": "ea9034", "thickness": 1},
+      {"color": "ea9034", "thickness": 1},
+      {"color": "ea9034", "thickness": 1},
+      {"color": "ea9034", "thickness": 1}
+  ]
+}
