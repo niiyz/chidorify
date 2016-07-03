@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "trans": "babel src -d dist",
-    "test": "npm run trans && node dist/chidori.js"
+    "test": "npm run trans && node dist/test.js",
+    "server": "http-server -o"
   },
   "dependencies": {
     "http-server": "0.9.0"
