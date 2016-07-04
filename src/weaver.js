@@ -33,12 +33,12 @@ export function weave(weave, viewBoxW = 400, viewBoxH = 400) {
   return `
   <svg viewBox="0 0 ${viewBoxW} ${viewBoxH}">
   <defs>
-    <pattern id="pattern1" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
+    <pattern id="pattern1" x="0" y="0" width="${x}" height="${y}" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
     ${tiles}
     </pattern>
   </defs>
   <g stroke="white">
-    <rect stroke-width="0" fill="url(#pattern1)" x="0" y="0" width="${viewBoxW / 2}" height="${viewBoxH / 2}" />
+    <rect stroke-width="0" fill="url(#pattern1)" x="0" y="0" width="${viewBoxW}" height="${viewBoxH}" />
   </g>
   </svg>`;
 }
