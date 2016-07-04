@@ -14,7 +14,7 @@ export function weave(weave, viewBoxW = 400, viewBoxH = 400) {
   y = 0;
   for (i = 0;i < longLen;i ++) {
     x = 0;
-    h = weft[i].thickness * 10;// interlacing height is weft width
+    h = weft[i].thickness;// interlacing height is weft width
     for (j = 0; j < latLen; j ++) {
       const warpIsOver = weave.diagram[i][j];
       let interlacingColor;
@@ -23,7 +23,7 @@ export function weave(weave, viewBoxW = 400, viewBoxH = 400) {
       } else {
         interlacingColor = weft[j].color;
       }
-      w = warp[j].thickness * 10;// interlacing width is wrap width
+      w = warp[j].thickness;// interlacing width is wrap width
       tiles += `<rect x="${x}" y="${y}" width="${w}" height="${h}" stroke="#${interlacingColor}" fill="#${interlacingColor}" />`;
       x += w;
     }
