@@ -1,11 +1,13 @@
 # chidorify
 
-chidori is japanese check pattern.
+chidorify is japanese check pattern maker.
 
 # Install
 
 ```
+clone https://github.com/niiyz/chidorify.git
+cd chidorify
 npm install
 npm test
-npm server #http://127.0.0.1:8080/
+npm start # Browser access to http://127.0.0.1:8080/
 ```
