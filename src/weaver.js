@@ -1,6 +1,6 @@
 'use strict'
 
-export function weave(weave, viewBoxW = 400, viewBoxH = 400) {
+export function weave(weave) {
 
   const warp = weave.warp;
   const weft = weave.weft;
@@ -30,15 +30,6 @@ export function weave(weave, viewBoxW = 400, viewBoxH = 400) {
     y += h;
   }
 
-  return `
-  <svg viewBox="0 0 ${viewBoxW} ${viewBoxH}">
-  <defs>
-    <pattern id="pattern1" x="0" y="0" width="${x}" height="${y}" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
-    ${tiles}
-    </pattern>
-  </defs>
-  <g stroke="white">
-    <rect stroke-width="0" fill="url(#pattern1)" x="0" y="0" width="${viewBoxW}" height="${viewBoxH}" />
-  </g>
-  </svg>`;
+  return {tiles, width: x, height: y}
+
 }
