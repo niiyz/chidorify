@@ -1,12 +1,12 @@
 {
-  "name": "chidori",
+  "name": "chidorify",
   "version": "1.0.0",
-  "description": "chidori is check pattern maker",
+  "description": "chidorify is japanese check pattern maker",
   "main": "index.js",
   "scripts": {
     "trans": "babel src -d dist",
-    "test": "npm run trans && node dist/test.js",
-    "server": "http-server -o"
+    "test": "npm run trans && node dist/examples/example.js",
+    "start": "http-server -o"
   },
   "dependencies": {
     "http-server": "0.9.0"
