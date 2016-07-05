@@ -5,7 +5,7 @@ chidorify is japanese check pattern maker.
 # Install
 
 ```
-clone https://github.com/niiyz/chidorify.git
+git clone https://github.com/niiyz/chidorify.git
 cd chidorify
 npm install
 npm test
