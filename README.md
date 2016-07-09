@@ -74,7 +74,7 @@ const viewBoxH = 800;
 save('public/test1.html', [texture], viewBoxW, viewBoxH)
 ```
 
-```
+``` js
 'use strict'
 
 import { YarnFactory } from '../yarn-factory';
