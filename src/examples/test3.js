@@ -1,5 +1,6 @@
 'use strict'
 
+import { TwoTone } from '../twotone'
 import { YarnFactory } from '../yarn-factory';
 import { WeaveRepeat } from '../weave-repeat';
 import { weave } from '../weaver';
@@ -22,15 +23,7 @@ const textures = [];
 
 const deepColors  = ['ff1493', '191970', '556b2f', 'cd5c5c'];
 const lightColors = ['eee8aa', 'fafad2', 'ffe4e1', 'ffff00'];
-const colorSets = [];
-for (let i = 0;i < lightColors.length;i ++) {
-  const lightColor = lightColors[i];
-  for (let j = 0;j < deepColors.length;j ++) {
-    const deepColor = deepColors[j];
-    colorSets.push([deepColor, lightColor]);
-  }
-}
-
+const colorSets = new TwoTone(deepColors, lightColors).colorSets();
 
 for (let i = 0;i < colorSets.length;i ++) {
   const deep   = YarnFactory.wide(colorSets[i][0]);
