@@ -1,20 +1,41 @@
 export class WeaveRepeat {
 
   constructor() {
-    this.warp = [];
-    this.weft = [];
+    this.resetAll()
   }
 
-  warping(yean) {
-    this.warp.push(yean)
+  warping(yarn) {
+    this.warp.push(yarn)
   }
 
-  pick(yean) {
-    this.weft.push(yean)
+  pick(yarn) {
+    this.weft.push(yarn)
+  }
+
+  orderWarp(yarn, n) {
+    for (let i = 0;i < n;i ++) {
+      this.warp.push(yarn)
+    }
+  }
+
+  orderWeft(yarn, n) {
+    for (let i = 0;i < n;i ++) {
+      this.weft.push(yarn)
+    }
   }
 
   design(diagram) {
     this.diagram = diagram
+  }
+
+  resetYarn() {
+    this.warp = [];
+    this.weft = [];
+  }
+
+  resetAll() {
+    this.daiagram = [[]];
+    this.resetYarn()
   }
 
   data() {
