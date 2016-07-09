@@ -12,13 +12,19 @@ export class WeaveRepeat {
     this.weft.push(yarn)
   }
 
-  orderWarp(yarn, n) {
+  orderWarp(yarn, n = 0) {
+    if (n === 0) {
+      n = this.warpNum();
+    }
     for (let i = 0;i < n;i ++) {
       this.warp.push(yarn)
     }
   }
 
-  orderWeft(yarn, n) {
+  orderWeft(yarn, n = 0) {
+    if (n === 0) {
+      n = this.weftNum();
+    }
     for (let i = 0;i < n;i ++) {
       this.weft.push(yarn)
     }
@@ -26,6 +32,17 @@ export class WeaveRepeat {
 
   design(diagram) {
     this.diagram = diagram
+  }
+
+  warpNum() {
+    if (this.diagram.length === 0) {
+      return 0
+    }
+    return this.diagram[0].length
+  }
+
+  weftNum() {
+    return this.diagram.length
   }
 
   resetYarn() {

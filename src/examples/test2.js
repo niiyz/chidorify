@@ -23,8 +23,8 @@ const textures = [];
 const green = YarnFactory.wide('EFEFEF');
 const gray  = YarnFactory.wide('CCCCCC');
 
-repeat.orderWarp(green, 8);
-repeat.orderWeft(gray,  8);
+repeat.orderWarp(green);
+repeat.orderWeft(gray);
 textures.push(weave(repeat.data()));
 
 repeat.resetYarn()
@@ -32,8 +32,8 @@ repeat.resetYarn()
 const pink   = YarnFactory.nomal('FF6E8C');
 const black  = YarnFactory.nomal('111111');
 
-repeat.orderWarp(pink,  8);
-repeat.orderWeft(black, 8);
+repeat.orderWarp(pink);
+repeat.orderWeft(black);
 
 textures.push(weave(repeat.data()));
 
@@ -42,8 +42,8 @@ repeat.resetYarn()
 const blue   = YarnFactory.nomal('0000FF');
 const white  = YarnFactory.nomal('FFFFFF');
 
-repeat.orderWarp(white,  8);
-repeat.orderWeft(blue,   8);
+repeat.orderWarp(white);
+repeat.orderWeft(blue);
 
 textures.push(weave(repeat.data()));
 
@@ -52,8 +52,8 @@ repeat.resetYarn()
 const violet  = YarnFactory.wide('6600FF');
 const orange  = YarnFactory.wide('FFCC99');
 
-repeat.orderWarp(violet,  8);
-repeat.orderWeft(orange,  8);
+repeat.orderWarp(violet);
+repeat.orderWeft(orange);
 
 textures.push(weave(repeat.data()));
 
