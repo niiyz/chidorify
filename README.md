@@ -11,135 +11,14 @@ npm install
 npm test
 npm start # Browser access to http://127.0.0.1:8080/
 ```
+# Examples
 
-# Example
-
-![screenshot](https://github.com/niiyz/chidorify/blob/master/screenshot.png "screenshot")
-
-# Test
+## Sample1
 
 ``` js
 'use strict'
 
-import { Yean } from '../yean'
-import { WeaveRepeat } from '../weave-repeat'
-import { weave } from '../weaver';
-import { save } from '../svg-test'
-
-const repeat = new WeaveRepeat();
-
-// Diagram
-repeat.design([
-  [0, 0, 0, 1, 0, 0, 0, 1],
-  [0, 1, 1, 1, 0, 1, 1, 1],
-  [1, 0, 1, 1, 1, 0, 1, 1],
-  [0, 0, 1, 0, 0, 0, 1, 0],
-  [0, 0, 0, 1, 0, 0, 0, 1],
-  [0, 1, 1, 1, 0, 1, 1, 1],
-  [1, 0, 1, 1, 1, 0, 1, 1],
-  [0, 0, 1, 0, 0, 0, 1, 0]
-]);
-
-// Yean Color and Thickness
-const green = new Yean('66FF00')
-const gray  = new Yean('CCCCCC')
-
-// Warp
-repeat.warping(green)
-repeat.warping(green)
-repeat.warping(green)
-repeat.warping(green)
-repeat.warping(green)
-repeat.warping(green)
-repeat.warping(green)
-repeat.warping(green)
-
-// Weft
-repeat.pick(gray)
-repeat.pick(gray)
-repeat.pick(gray)
-repeat.pick(gray)
-repeat.pick(gray)
-repeat.pick(gray)
-repeat.pick(gray)
-repeat.pick(gray)
-
-// Weave
-const texture = weave(repeat.data())
-
-// Test Output
-const viewBoxW = 800;
-const viewBoxH = 800;
-
-save('public/test1.html', [texture], viewBoxW, viewBoxH)
-```
-
-``` js
-'use strict'
-
-import { YarnFactory } from '../yarn-factory';
-import { WeaveRepeat } from '../weave-repeat';
-import { weave } from '../weaver';
-import { save } from '../svg-test';
-
-const repeat = new WeaveRepeat();
-
-repeat.design([
-  [0, 0, 0, 1, 0, 0, 0, 1],
-  [0, 1, 1, 1, 0, 1, 1, 1],
-  [1, 0, 1, 1, 1, 0, 1, 1],
-  [0, 0, 1, 0, 0, 0, 1, 0],
-  [0, 0, 0, 1, 0, 0, 0, 1],
-  [0, 1, 1, 1, 0, 1, 1, 1],
-  [1, 0, 1, 1, 1, 0, 1, 1],
-  [0, 0, 1, 0, 0, 0, 1, 0]
-]);
-
-const textures = [];
-
-const green = YarnFactory.wide('EFEFEF');
-const gray  = YarnFactory.wide('CCCCCC');
-
-repeat.orderWarp(green, 8);
-repeat.orderWeft(gray,  8);
-textures.push(weave(repeat.data()));
-
-repeat.resetYarn()
-
-const pink   = YarnFactory.nomal('FF6E8C');
-const black  = YarnFactory.nomal('111111');
-
-repeat.orderWarp(pink,  8);
-repeat.orderWeft(black, 8);
-
-textures.push(weave(repeat.data()));
-
-repeat.resetYarn()
-
-const blue   = YarnFactory.nomal('0000FF');
-const white  = YarnFactory.nomal('FFFFFF');
-
-repeat.orderWarp(white,  8);
-repeat.orderWeft(blue,   8);
-
-textures.push(weave(repeat.data()));
-
-repeat.resetYarn()
-
-const violet  = YarnFactory.wide('6600FF');
-const orange  = YarnFactory.wide('FFCC99');
-
-repeat.orderWarp(violet,  8);
-repeat.orderWeft(orange,  8);
-
-textures.push(weave(repeat.data()));
-
-save('public/test2.html', textures);
-```
-
-``` js
-'use strict'
-
+import { TwoTone } from '../twotone'
 import { YarnFactory } from '../yarn-factory';
 import { WeaveRepeat } from '../weave-repeat';
 import { weave } from '../weaver';
@@ -162,15 +41,7 @@ const textures = [];
 
 const deepColors  = ['ff1493', '191970', '556b2f', 'cd5c5c'];
 const lightColors = ['eee8aa', 'fafad2', 'ffe4e1', 'ffff00'];
-const colorSets = [];
-for (let i = 0;i < lightColors.length;i ++) {
-  const lightColor = lightColors[i];
-  for (let j = 0;j < deepColors.length;j ++) {
-    const deepColor = deepColors[j];
-    colorSets.push([deepColor, lightColor]);
-  }
-}
-
+const colorSets = new TwoTone(deepColors, lightColors).colorSets();
 
 for (let i = 0;i < colorSets.length;i ++) {
   const deep   = YarnFactory.wide(colorSets[i][0]);
