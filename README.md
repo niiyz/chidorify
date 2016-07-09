@@ -18,6 +18,7 @@ npm start # Browser access to http://127.0.0.1:8080/
 ``` js
 'use strict'
 
+import { TwoTone } from '../twotone'
 import { YarnFactory } from '../yarn-factory';
 import { WeaveRepeat } from '../weave-repeat';
 import { weave } from '../weaver';
