@@ -11,7 +11,7 @@ export class TwoTone {
       const lightColor = this.lightColors[i];
       for (let j = 0;j < this.deepColors.length;j ++) {
         const deepColor = this.deepColors[j];
-        this.colorSets.push([deepColor, lightColor]);
+        this.colorSets.push({deep: deepColor, light: lightColor});
       }
     }
     return this.colorSets;
