@@ -187,3 +187,4 @@ for (let i = 0;i < colorSets.length;i ++) {
 save('public/test3.html', textures);
 ```
 
+![screenshot](https://github.com/niiyz/chidorify/blob/master/screenshot_test3.png "screenshot")
