@@ -3,17 +3,16 @@ import fs from 'fs'
 
 export function save(path, textures, viewBoxW = 800, viewBoxH = 800) {
 
-  let pattern, rect = '';
-  let x, y = 0;
+  let pattern = '', rect = '';
+  let x = 0, y = 0;
   const textureNum = textures.length;
-  const width      = viewBoxW / textureNum;
-  const height     = viewBoxH / textureNum;
+  const width      = 200;
+  const height     = 200;
 
   for (let i = 0;i < textureNum;i ++) {
 
     const texture = textures[i];
 
-    x = width * i;
     if (x >= viewBoxW) {
       x = 0;
       y += height;
@@ -24,6 +23,9 @@ export function save(path, textures, viewBoxW = 800, viewBoxH = 800) {
     </pattern>`;
 
     rect += `<rect stroke-width="0" fill="url(#pattern${i+1})" x="${x}" y="${y}" width="${width}" height="${height}" />`;
+
+    x += width;
+
   }
 
   const svg =  `
