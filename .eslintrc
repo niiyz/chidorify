@@ -8,7 +8,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "semi": 0,
+        "semi": 1,
         "no-console": 0,
         "arrow-body-style": 2,
         "arrow-parens": 2,
