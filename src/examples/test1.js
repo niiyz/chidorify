@@ -18,8 +18,8 @@ repeat.design([
   [0, 0, 1, 0, 0, 0, 1, 0]
 ]);
 
-const green = YeanFactory.nomal('66FF00')
-const gray  = YeanFactory.nomal('CCCCCC')
+const green = YarnFactory.nomal('66FF00')
+const gray  = YarnFactory.nomal('CCCCCC')
 
 repeat.warping(green)
 repeat.warping(green)
