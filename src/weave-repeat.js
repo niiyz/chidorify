@@ -45,13 +45,43 @@ export class WeaveRepeat {
     return this.diagram.length
   }
 
+  twoTone(deep, light) {
+    this.deepColor  = deep;
+    this.lightColor = light;
+  }
+
+  threadOne() {
+    this.thread(1);
+  }
+  threadHerf() {
+    this.thread(2);
+  }
+  threadQuareter() {
+    this.thread(4);
+  }
+
+  thread(splitNum) {
+
+    const warpNum = this.warpNum();
+    const weftNum = this.weftNum();
+
+    switch (splitNum) {
+    case 1:
+      this.orderWarp(this.deepColor, warpNum);
+      this.orderWeft(this.lightColor, weftNum);
+      break;
+    }
+  }
+
   resetYarn() {
+    this.deepColor  = '';
+    this.lightColor = '';
     this.warp = [];
     this.weft = [];
   }
 
   resetAll() {
-    this.daiagram = [[]];
+    this.daiagram = [];
     this.resetYarn()
   }
 
