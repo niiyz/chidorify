@@ -6,7 +6,6 @@
   "scripts": {
     "build": "babel src -d dist",
     "watch": "babel -w src -d dist",
-    "test": "npm run trans && node dist/examples/example.js",
     "start": "http-server -o"
   },
   "dependencies": {
