@@ -59,3 +59,5 @@ save('public/test3.html', textures);
 ```
 
 ![screenshot](https://github.com/niiyz/chidorify/blob/master/screenshot_test3.png "screenshot")
+
+https://jsfiddle.net/niiyz/duc9ffg7/
