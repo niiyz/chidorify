@@ -1,5 +1,5 @@
 
-import fs from 'fs'
+import fs from 'fs';
 
 export function save(path, textures, viewBoxW = 800, viewBoxH = 800) {
 
@@ -38,5 +38,5 @@ export function save(path, textures, viewBoxW = 800, viewBoxH = 800) {
   </g>
   </svg>`;
 
-  fs.writeFile(path, svg)
+  fs.writeFile(path, svg);
 }

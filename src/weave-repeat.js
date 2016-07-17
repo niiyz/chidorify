@@ -1,15 +1,15 @@
 export class WeaveRepeat {
 
   constructor() {
-    this.resetAll()
+    this.resetAll();
   }
 
   warping(yarn) {
-    this.warp.push(yarn)
+    this.warp.push(yarn);
   }
 
   pick(yarn) {
-    this.weft.push(yarn)
+    this.weft.push(yarn);
   }
 
   orderWarp(yarn, n = 0) {
@@ -17,7 +17,7 @@ export class WeaveRepeat {
       n = this.warpNum();
     }
     for (let i = 0;i < n;i ++) {
-      this.warp.push(yarn)
+      this.warp.push(yarn);
     }
   }
 
@@ -26,23 +26,23 @@ export class WeaveRepeat {
       n = this.weftNum();
     }
     for (let i = 0;i < n;i ++) {
-      this.weft.push(yarn)
+      this.weft.push(yarn);
     }
   }
 
   design(diagram) {
-    this.diagram = diagram
+    this.diagram = diagram;
   }
 
   warpNum() {
     if (this.diagram.length === 0) {
-      return 0
+      return 0;
     }
-    return this.diagram[0].length
+    return this.diagram[0].length;
   }
 
   weftNum() {
-    return this.diagram.length
+    return this.diagram.length;
   }
 
   twoTone(deep, light) {
@@ -82,7 +82,7 @@ export class WeaveRepeat {
 
   resetAll() {
     this.daiagram = [];
-    this.resetYarn()
+    this.resetYarn();
   }
 
   data() {

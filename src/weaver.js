@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 export function weave(weave) {
 
@@ -30,6 +30,6 @@ export function weave(weave) {
     y += h;
   }
 
-  return {tiles, width: x, height: y}
+  return {tiles, width: x, height: y};
 
 }

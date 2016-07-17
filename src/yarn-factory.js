@@ -1,4 +1,4 @@
-import { Yarn } from './yarn.js'
+import { Yarn } from './yarn.js';
 
 export class YarnFactory {
 
