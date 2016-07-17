@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-import { TwoTone } from '../twotone'
+import { twoTone } from '../twotone';
 import { YarnFactory } from '../yarn-factory';
 import { WeaveRepeat } from '../weave-repeat';
 import { weave } from '../weaver';
@@ -23,22 +23,28 @@ const textures = [];
 
 const deepColors  = ['ff1493', '191970', '556b2f', 'cd5c5c'];
 const lightColors = ['eee8aa', 'fafad2', 'ffe4e1', 'ffff00'];
-const colorSets = new TwoTone(deepColors, lightColors).colorSets();
+const colorSets = twoTone(deepColors, lightColors);
 
-for (let i = 0;i < colorSets.length;i ++) {
-  const deep   = YarnFactory.wide(colorSets[i].deep);
-  const light  = YarnFactory.wide(colorSets[i].light);
+let colorSet = colorSets.next();
+
+while (!colorSet.done) {
+
+  const deep   = YarnFactory.wide(colorSet.value.deep);
+  const light  = YarnFactory.wide(colorSet.value.light);
 
   repeat.orderWarp(light, 4);
   repeat.orderWarp(deep,  4);
 
   repeat.orderWeft(light, 4);
   repeat.orderWeft(deep,  4);
-  console.log(repeat.data());
-  const texture = weave(repeat.data())
+
+  const texture = weave(repeat.data());
   textures.push(texture);
 
   repeat.resetYarn();
+
+  colorSet = colorSets.next();
+
 }
 
 save('public/test5.html', textures);

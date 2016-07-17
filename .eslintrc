@@ -13,7 +13,7 @@
         "arrow-body-style": 2,
         "arrow-parens": 2,
         "arrow-spacing": 2,
-        "generator-star-spacing": 2,
+        "generator-star-spacing": 0,
         "no-useless-constructor": 2,
         "no-var": 2,
         "object-shorthand": 2,
