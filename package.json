@@ -4,10 +4,11 @@
   "description": "chidorify is japanese check pattern maker",
   "main": "index.js",
   "scripts": {
-    "build": "$(npm bin)/browserify src/test1.js -t babelify -o dist/bundle.js",
+    "build": "$(npm bin)/browserify src/test1.js -t babelify -o public/js/bundle.js",
+    "serve": "$(npm bin)/serve public"
   },
   "dependencies": {
-    "http-server": "0.9.0"
+    "serve": "*"
   },
   "devDependencies": {
     "babel-runtime": "^6.9.2",
