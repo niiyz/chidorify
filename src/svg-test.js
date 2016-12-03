@@ -1,7 +1,6 @@
 
-import fs from 'fs';
 
-export function save(path, textures, viewBoxW = 800, viewBoxH = 800) {
+export function save(textures, viewBoxW = 800, viewBoxH = 800) {
 
   let pattern = '', rect = '';
   let x = 0, y = 0;
@@ -28,7 +27,7 @@ export function save(path, textures, viewBoxW = 800, viewBoxH = 800) {
 
   }
 
-  const svg =  `
+  return `
   <svg viewBox="0 0 ${viewBoxW} ${viewBoxH}">
   <defs>
     ${pattern}
@@ -38,5 +37,4 @@ export function save(path, textures, viewBoxW = 800, viewBoxH = 800) {
   </g>
   </svg>`;
 
-  fs.writeFile(path, svg);
 }
