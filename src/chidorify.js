@@ -4,7 +4,7 @@ import { twoTone } from './twotone';
 import { YarnFactory } from './yarn-factory';
 import { WeaveRepeat } from './weave-repeat';
 import { weave } from './weaver';
-import { save } from './svg-test';
+import { makeSample } from './make-sample';
 
 export class Chidorify {
 
@@ -46,7 +46,7 @@ export class Chidorify {
 
         }
 
-        return save(textures);
+        return makeSample(textures);
 
     }
 }
