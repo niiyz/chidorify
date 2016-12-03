@@ -2,11 +2,12 @@
   "name": "chidorify",
   "version": "1.0.0",
   "description": "chidorify is japanese check pattern maker",
-  "main": "index.js",
+  "main": "lib/chidorify.js",
   "scripts": {
-    "build": "$(npm bin)/browserify src/example/example.js -t babelify -o public/js/bundle.js",
+    "build": "$(npm bin)/browserify src/chidorify.js -t babelify -o lib/chidorify.js",
+    "build:example": "$(npm bin)/browserify src/example/example.js -t babelify -o public/js/bundle.js",
     "serve": "$(npm bin)/serve public",
-    "test": "npm run build && npm run serve"
+    "test": "npm run build:example && npm run serve"
   },
   "dependencies": {
     "serve": "*"
