@@ -2,7 +2,7 @@
 
 chidorify is check pattern maker.
 
-![screenshot](https://github.com/niiyz/chidorify/blob/master/screenshot.png)
+![screenshot](screenshot.png)
 
 # Install
 
