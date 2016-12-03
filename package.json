@@ -4,7 +4,7 @@
   "description": "chidorify is japanese check pattern maker",
   "main": "index.js",
   "scripts": {
-    "build": "$(npm bin)/browserify src/test1.js -t babelify -o public/js/bundle.js",
+    "build": "$(npm bin)/browserify src/example/example.js -t babelify -o public/js/bundle.js",
     "serve": "$(npm bin)/serve public",
     "test": "npm run build && npm run serve"
   },
