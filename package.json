@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "$(npm bin)/browserify src/test1.js -t babelify -o public/js/bundle.js",
-    "serve": "$(npm bin)/serve public"
+    "serve": "$(npm bin)/serve public",
+    "test": "npm run build && npm run serve"
   },
   "dependencies": {
     "serve": "*"
