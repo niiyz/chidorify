@@ -7,7 +7,8 @@
     "build": "$(npm bin)/babel src --out-dir lib --ignore example",
     "build:example": "$(npm bin)/browserify src/example/example.js -t babelify -o public/js/bundle.js",
     "serve": "$(npm bin)/serve public",
-    "test": "npm run build:example && npm run serve"
+    "example": "npm run build:example && npm run serve",
+    "test": "mocha"
   },
   "dependencies": {
     "serve": "*"
