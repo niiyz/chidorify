@@ -1,4 +1,5 @@
-# chidorify
+# chidorify [![Build Status](https://secure.travis-ci.org/niiyz/chidorify.png?branch=master)](http://travis-ci.org/niiyz/chidorify)
+
 
 chidorify is check pattern maker.
 
