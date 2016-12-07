@@ -8,10 +8,7 @@ chidorify is check pattern maker.
 # Install
 
 ```
-git clone https://github.com/niiyz/chidorify.git
-cd chidorify
-npm install
-npm run test # Browser access to http://localhost:3000/
+npm install chidorify --save
 ```
 
 ## Example
@@ -19,7 +16,7 @@ npm run test # Browser access to http://localhost:3000/
 ``` js
 'use strict';
 
-import { Chidorify } from '../chidorify';
+import { Chidorify } from 'chidorify';
 
 const design = [
     [0, 1, 1, 0, 0, 1, 1, 0],
