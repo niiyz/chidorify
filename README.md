@@ -1,4 +1,4 @@
-# chidorify [![Build Status](https://secure.travis-ci.org/niiyz/chidorify.png?branch=master)](http://travis-ci.org/niiyz/chidorify)
+# chidorify [![Build Status](https://secure.travis-ci.org/niiyz/chidorify.png?branch=master)](http://travis-ci.org/niiyz/chidorify) [![npm version](https://badge.fury.io/js/chidorify.svg)](https://badge.fury.io/js/chidorify)
 
 
 chidorify is check pattern maker.
