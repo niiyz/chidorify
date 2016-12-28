@@ -1124,7 +1124,7 @@ process.umask = function() { return 0; };
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Chidorify = undefined;
 
@@ -1138,9 +1138,9 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var _twotone = require('./twotone');
 
-var _yarnFactory = require('./yarn-factory');
-
 var _weaveRepeat = require('./weave-repeat');
+
+var _plan = require('./plan');
 
 var _weaver = require('./weaver');
 
@@ -1149,53 +1149,51 @@ var _makeSample = require('./make-sample');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Chidorify = exports.Chidorify = function () {
-    function Chidorify(design, deepColors, lightColors) {
-        (0, _classCallCheck3.default)(this, Chidorify);
+  function Chidorify(design, deepColors, lightColors) {
+    (0, _classCallCheck3.default)(this, Chidorify);
 
 
-        this.repeat = new _weaveRepeat.WeaveRepeat();
-        this.repeat.design(design);
+    this.repeat = new _weaveRepeat.WeaveRepeat();
 
-        this.deepColors = deepColors;
-        this.lightColors = lightColors;
+    this.design = design;
+    this.deepColors = deepColors;
+    this.lightColors = lightColors;
+  }
+
+  (0, _createClass3.default)(Chidorify, [{
+    key: 'run',
+    value: function run() {
+
+      var textures = [];
+
+      var colorSets = (0, _twotone.twoTone)(this.deepColors, this.lightColors);
+
+      var colorSet = colorSets.next();
+
+      while (!colorSet.done) {
+
+        var deep = colorSet.value.deep;
+        var light = colorSet.value.light;
+
+        this.repeat.design(this.design);
+        this.repeat.setWrapPlan(new _plan.Plan(8, ['N'], [deep, light]));
+        this.repeat.setWeftPlan(new _plan.Plan(8, ['N'], [deep, light]));
+
+        var texture = (0, _weaver.weave)(this.repeat.data());
+        textures.push(texture);
+
+        this.repeat.resetYarn();
+
+        colorSet = colorSets.next();
+      }
+
+      return (0, _makeSample.makeSample)(textures);
     }
-
-    (0, _createClass3.default)(Chidorify, [{
-        key: 'run',
-        value: function run() {
-
-            var textures = [];
-
-            var colorSets = (0, _twotone.twoTone)(this.deepColors, this.lightColors);
-
-            var colorSet = colorSets.next();
-
-            while (!colorSet.done) {
-
-                var deep = _yarnFactory.YarnFactory.wide(colorSet.value.deep);
-                var light = _yarnFactory.YarnFactory.wide(colorSet.value.light);
-
-                this.repeat.orderWarp(light, 4);
-                this.repeat.orderWarp(deep, 4);
-
-                this.repeat.orderWeft(light, 4);
-                this.repeat.orderWeft(deep, 4);
-
-                var texture = (0, _weaver.weave)(this.repeat.data());
-                textures.push(texture);
-
-                this.repeat.resetYarn();
-
-                colorSet = colorSets.next();
-            }
-
-            return (0, _makeSample.makeSample)(textures);
-        }
-    }]);
-    return Chidorify;
+  }]);
+  return Chidorify;
 }();
 
-},{"./make-sample":27,"./twotone":28,"./weave-repeat":29,"./weaver":30,"./yarn-factory":31,"babel-runtime/helpers/classCallCheck":2,"babel-runtime/helpers/createClass":3}],26:[function(require,module,exports){
+},{"./make-sample":27,"./plan":28,"./twotone":29,"./weave-repeat":30,"./weaver":31,"babel-runtime/helpers/classCallCheck":2,"babel-runtime/helpers/createClass":3}],26:[function(require,module,exports){
 'use strict';
 
 var _chidorify = require('../chidorify');
@@ -1252,6 +1250,69 @@ function makeSample(textures) {
 }
 
 },{}],28:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Plan = undefined;
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _yarnFactory = require('./yarn-factory');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Plan = exports.Plan = function () {
+  function Plan(max, thickness, colors) {
+    (0, _classCallCheck3.default)(this, Plan);
+
+    this.max = max;
+    this.thickness = thickness;
+    this.colors = colors;
+    this.yarns = [];
+  }
+
+  (0, _createClass3.default)(Plan, [{
+    key: 'make',
+    value: function make() {
+
+      var thicknessTotal = 0;
+      var thicknessList = [],
+          colorList = [];
+
+      while (this.max > thicknessTotal) {
+        if (!thicknessList.length) {
+          thicknessList = [].concat(this.thickness);
+        }
+
+        if (!colorList.length) {
+          colorList = [].concat(this.colors);
+        }
+
+        var thickness = thicknessList.shift();
+        var color = colorList.shift();
+
+        var yarn = _yarnFactory.YarnFactory.make(color, thickness);
+
+        this.yarns.push(yarn);
+
+        thicknessTotal += yarn.thickness;
+      }
+
+      return this.yarns;
+    }
+  }]);
+  return Plan;
+}();
+
+},{"./yarn-factory":32,"babel-runtime/helpers/classCallCheck":2,"babel-runtime/helpers/createClass":3}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1315,19 +1376,19 @@ function twoTone() {
   }, _marked[0], this);
 }
 
-},{"babel-runtime/regenerator":23}],29:[function(require,module,exports){
-'use strict';
+},{"babel-runtime/regenerator":23}],30:[function(require,module,exports){
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.WeaveRepeat = undefined;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _createClass2 = require("babel-runtime/helpers/createClass");
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
@@ -1337,112 +1398,58 @@ var WeaveRepeat = exports.WeaveRepeat = function () {
   function WeaveRepeat() {
     (0, _classCallCheck3.default)(this, WeaveRepeat);
 
-    this.resetAll();
+    this.resetYarn();
   }
 
   (0, _createClass3.default)(WeaveRepeat, [{
-    key: 'warping',
-    value: function warping(yarn) {
-      this.warp.push(yarn);
-    }
-  }, {
-    key: 'pick',
-    value: function pick(yarn) {
-      this.weft.push(yarn);
-    }
-  }, {
-    key: 'orderWarp',
-    value: function orderWarp(yarn) {
-      var n = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-      if (n === 0) {
-        n = this.warpNum();
-      }
-      for (var i = 0; i < n; i++) {
-        this.warp.push(yarn);
-      }
-    }
-  }, {
-    key: 'orderWeft',
-    value: function orderWeft(yarn) {
-      var n = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-      if (n === 0) {
-        n = this.weftNum();
-      }
-      for (var i = 0; i < n; i++) {
-        this.weft.push(yarn);
-      }
-    }
-  }, {
-    key: 'design',
+    key: "design",
     value: function design(diagram) {
       this.diagram = diagram;
     }
   }, {
-    key: 'warpNum',
-    value: function warpNum() {
-      if (this.diagram.length === 0) {
-        return 0;
-      }
-      return this.diagram[0].length;
+    key: "warping",
+    value: function warping(yarn) {
+      this.warp.push(yarn);
     }
   }, {
-    key: 'weftNum',
-    value: function weftNum() {
-      return this.diagram.length;
+    key: "pick",
+    value: function pick(yarn) {
+      this.weft.push(yarn);
     }
   }, {
-    key: 'twoTone',
-    value: function twoTone(deep, light) {
-      this.deepColor = deep;
-      this.lightColor = light;
-    }
-  }, {
-    key: 'threadOne',
-    value: function threadOne() {
-      this.thread(1);
-    }
-  }, {
-    key: 'threadHerf',
-    value: function threadHerf() {
-      this.thread(2);
-    }
-  }, {
-    key: 'threadQuareter',
-    value: function threadQuareter() {
-      this.thread(4);
-    }
-  }, {
-    key: 'thread',
-    value: function thread(splitNum) {
+    key: "setWrapPlan",
+    value: function setWrapPlan(plan) {
 
-      var warpNum = this.warpNum();
-      var weftNum = this.weftNum();
+      var yarns = plan.make();
 
-      switch (splitNum) {
-        case 1:
-          this.orderWarp(this.deepColor, warpNum);
-          this.orderWeft(this.lightColor, weftNum);
-          break;
+      var yarnsLen = yarns.length;
+
+      for (var i = 0; i < yarnsLen; i++) {
+        var yarn = yarns[i];
+        this.warp.push(yarn);
       }
     }
   }, {
-    key: 'resetYarn',
+    key: "setWeftPlan",
+    value: function setWeftPlan(plan) {
+
+      var yarns = plan.make();
+
+      var yarnsLen = yarns.length;
+
+      for (var i = 0; i < yarnsLen; i++) {
+        var yarn = yarns[i];
+        this.weft.push(yarn);
+      }
+    }
+  }, {
+    key: "resetYarn",
     value: function resetYarn() {
-      this.deepColor = '';
-      this.lightColor = '';
       this.warp = [];
       this.weft = [];
     }
   }, {
-    key: 'resetAll',
-    value: function resetAll() {
-      this.daiagram = [];
-      this.resetYarn();
-    }
-  }, {
-    key: 'data',
+    key: "data",
     value: function data() {
       var json = {};
       json.warp = this.warp;
@@ -1454,7 +1461,7 @@ var WeaveRepeat = exports.WeaveRepeat = function () {
   return WeaveRepeat;
 }();
 
-},{"babel-runtime/helpers/classCallCheck":2,"babel-runtime/helpers/createClass":3}],30:[function(require,module,exports){
+},{"babel-runtime/helpers/classCallCheck":2,"babel-runtime/helpers/createClass":3}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1499,7 +1506,7 @@ function weave(weave) {
   return { tiles: tiles, width: x, height: y };
 }
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1525,8 +1532,20 @@ var YarnFactory = exports.YarnFactory = function () {
   }
 
   (0, _createClass3.default)(YarnFactory, null, [{
-    key: 'nomal',
-    value: function nomal(color) {
+    key: 'make',
+    value: function make(color, thickness) {
+
+      if (thickness === 'N') {
+        thickness = 1;
+      } else if (thickness === 'W') {
+        thickness = 2;
+      }
+
+      return new _yarn.Yarn(color, thickness);
+    }
+  }, {
+    key: 'normal',
+    value: function normal(color) {
       return new _yarn.Yarn(color);
     }
   }, {
@@ -1538,7 +1557,7 @@ var YarnFactory = exports.YarnFactory = function () {
   return YarnFactory;
 }();
 
-},{"./yarn.js":32,"babel-runtime/helpers/classCallCheck":2,"babel-runtime/helpers/createClass":3}],32:[function(require,module,exports){
+},{"./yarn.js":33,"babel-runtime/helpers/classCallCheck":2,"babel-runtime/helpers/createClass":3}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
