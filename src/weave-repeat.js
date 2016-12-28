@@ -1,6 +1,10 @@
 export class WeaveRepeat {
 
-  constructor(diagram) {
+  constructor() {
+    this.resetYarn();
+  }
+
+  design(diagram) {
     this.diagram = diagram;
   }
 
