@@ -1,6 +1,10 @@
 export class WeaveRepeat {
 
-  constructor(diagram) {
+  constructor() {
+    this.resetYarn();
+  }
+
+  design(diagram) {
     this.diagram = diagram;
   }
 
@@ -14,10 +18,12 @@ export class WeaveRepeat {
 
   setWrapPlan(plan) {
 
-    const planLen = plan.length;
+    const yarns = plan.make();
 
-    for (let i = 0;i < planLen;i ++) {
-      let yarn = plan[i];
+    const yarnsLen = yarns.length;
+
+    for (let i = 0;i < yarnsLen;i ++) {
+      let yarn = yarns[i];
       this.warp.push(yarn);
     }
 
@@ -25,10 +31,12 @@ export class WeaveRepeat {
 
   setWeftPlan(plan) {
 
-    const planLen = plan.length;
+    const yarns = plan.make();
 
-    for (let i = 0;i < planLen;i ++) {
-      let yarn = plan[i];
+    const yarnsLen = yarns.length;
+
+    for (let i = 0;i < yarnsLen;i ++) {
+      let yarn = yarns[i];
       this.weft.push(yarn);
     }
 

@@ -10,8 +10,9 @@ export class Chidorify {
 
   constructor(design, deepColors, lightColors) {
 
-    this.repeat = new WeaveRepeat(design);
+    this.repeat = new WeaveRepeat();
 
+    this.design      = design;
     this.deepColors  = deepColors;
     this.lightColors = lightColors;
 
@@ -30,6 +31,7 @@ export class Chidorify {
       const deep  = colorSet.value.deep;
       const light = colorSet.value.light;
 
+      this.repeat.design(this.design);
       this.repeat.setWrapPlan(new Plan(8, ['N'], [deep, light]));
       this.repeat.setWeftPlan(new Plan(8, ['N'], [deep, light]));
 

@@ -14,8 +14,7 @@ export class Plan {
     let thicknessTotal = 0;
     let thicknessList = [], colorList = [];
 
-    while (thicknessTotal >= this.max) {
-
+    while (this.max > thicknessTotal) {
       if (!thicknessList.length) {
         thicknessList = [].concat(this.thickness);
       }
