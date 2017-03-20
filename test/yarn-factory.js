@@ -12,4 +12,20 @@ describe('YarnFactory Class', () => {
 
   });
 
+  it('normal', () => {
+
+    const yarn =  YarnFactory.normal('#EFEFEF');
+
+    assert(1 === yarn.thickness);
+
+  });
+
+  it('wide', () => {
+
+    const yarn =  YarnFactory.wide('#EFEFEF');
+
+    assert(2 === yarn.thickness);
+
+  });
+
 });
